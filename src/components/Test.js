@@ -40,10 +40,11 @@ class Test extends Component{
         }else if(document.attachEvent){
             document.attachEvent("onreadystatechange", handleDOMContentLoadedHack);
         }
-        */
+
         window.onload = function(){
             that.refs.viewport.style.height = (window.innerHeight - that.refs.subtitle.offsetHeight) + "px";
         }
+        */
     }
 
     render(){
