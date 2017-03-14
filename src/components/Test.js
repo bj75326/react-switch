@@ -14,16 +14,43 @@ class Test extends Component{
     }
 
     toggle(){
-        let toggledValue = !this.state.switch_status_01;
+        const toggledValue = !this.state.switch_status_01;
         this.setState({switch_status_01: toggledValue});
-        console.log(this.state.switch_status_01);
+    }
+
+    componentDidMount(){
+        //set height of Viewport
+        const that = this;
+        /*
+        const handleDOMContentLoaded = function(){
+            document.removeEventListener("DOMContentLoaded", handleDOMContentLoaded, false);
+            console.log(that.refs.subtitle.offsetHeight);
+            that.refs.viewport.style.height = (window.innerHeight - that.refs.subtitle.offsetHeight) + "px";
+        };
+
+        const handleDOMContentLoadedHack = function(){
+            if(document.readyState === 'completed'){
+                document.detachEvent("onreadystatechange", handleDOMContentLoadedHack);
+                that.refs.viewport.style.height = (window.innerHeight - that.refs.subtitle.offsetHeight) + "px";
+            }
+        };
+
+        if(document.addEventListener){
+            document.addEventListener("DOMContentLoaded", handleDOMContentLoaded, false);
+        }else if(document.attachEvent){
+            document.attachEvent("onreadystatechange", handleDOMContentLoadedHack);
+        }
+        */
+        window.onload = function(){
+            that.refs.viewport.style.height = (window.innerHeight - that.refs.subtitle.offsetHeight) + "px";
+        }
     }
 
     render(){
 
         return (
             <div className = "page">
-                <div className="subtitle">
+                <div className="subtitle" ref="subtitle">
                     <div className="page-back"></div>
                     <div className="page-title">React-Switch</div>
                     <div className="extension"></div>
@@ -31,7 +58,7 @@ class Test extends Component{
                         <p>此例请用移动端查看</p>
                     </div>
                 </div>
-                <div className="viewport">
+                <div className="viewport" ref="viewport">
                     <h5 className="bin-cell-desc">基本用法，状态切换触发事件</h5>
                     <div className="bin-cell-wrapper">
                         <a className="bin-cell">

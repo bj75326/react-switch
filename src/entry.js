@@ -8,4 +8,4 @@ import initReactFastClick from 'react-fastclick';
 
 initReactFastClick();
 
-render(<Test />, document.querySelector("#app"));
+render(<Test />, document.querySelector("#App"));

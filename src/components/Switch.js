@@ -42,7 +42,8 @@ class Switch extends Component{
 
     componentWillReceiveProps(nextProps){
         console.log("in componentWillReceiveProps.");
-        console.log(nextProps);
+        //console.log(nextProps);
+        //alert("in componentWillReceiveProps.");
         if('checked' in nextProps){
             this.setState({
                 checked: !!nextProps.checked
@@ -51,16 +52,24 @@ class Switch extends Component{
     }
 
     handleClick(){
+        console.log("handleClick run");
         this.props.onChange();
     }
+    /*
+    handleClick2(e){
+        e.preventDefault();
+        const toggledValue = !this.state.checked;
+        this.setState({checked: toggledValue});
+    }
+    */
 
     render(){
-        console.log("in switch render");
-        console.log(this);
-        const {className, prefixCls, disabled, ...restProps} = this.props;
+        //console.log("in switch render");
+        console.log(this.props.checked);
+        const {className, prefixCls, disabled} = this.props;
 
         const checked = this.state.checked;
-        console.log(checked);
+        //console.log(checked);
         const switchClassName = classNames({
             [styles[className]]: !!className,
             [styles[prefixCls]]: true,
